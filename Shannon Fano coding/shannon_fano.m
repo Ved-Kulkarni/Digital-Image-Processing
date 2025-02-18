@@ -1,16 +1,16 @@
-% Ranges and frequencies
+% Ranges and frequencies :
 ranges = [1 30; 31 59; 60 63; 64 100; 101 130; 131 159; 160 200; 201 255];
 freq = [2048, 2048, 2048, 2048, 819, 819, 3277, 3277];
-prob = freq / sum(freq); % Normalize to probabilities
+prob = freq / sum(freq); 
 
-% Probabilities and ranges sorted in descending order
+% Probabilities and ranges sorted in descending order :
 [prob, idx] = sort(prob, 'descend');
 ranges = ranges(idx, :);
 
-% Codes and cumulative probabilities
+% Codes and cumulative probabilities :
 codes = cell(1, length(prob));
 
-% Shannon-Fano coding
+% Shannon-Fano coding :
 for i = 1:length(prob)
     if i == 1
         codes{i} = '0';
@@ -25,7 +25,7 @@ for i = 1:length(prob)
     end
 end
 
-% Display results
+% Result :
 for i = 1:length(codes)
     fprintf('Range: %d-%d, Code: %s\n', ranges(i, 1), ranges(i, 2), codes{i});
 end
