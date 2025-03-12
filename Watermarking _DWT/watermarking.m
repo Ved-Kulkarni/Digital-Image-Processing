@@ -2,12 +2,12 @@ clc;
 clear all;
 close all;
 
-I = im2double(imread('lena.png')); % Host image
+I = im2double(imread('lena.png')); % Original image
 Wm = im2double(imread('watermark.png')); % Watermark image
 
 Wm = rgb2gray(Wm); % Convert watermark to grayscale 
 
-% DWT on each color channel of the host image
+% DWT on each color channel of the original image
 for i = 1:3
     [LL(:,:,i), LH(:,:,i), HL(:,:,i), HH(:,:,i)] = dwt2(I(:,:,i), 'haar');
 end
